@@ -28,8 +28,44 @@ public class MovieSelection {
 	 * @param students the list of students you're looking a movie for
 	 * @return the movie thats most preferable
 	 */
+	
+	//Jonathan's Part
 	public String findMovie(TreeSet<String> students) {
-		
+			//creates a treemap to keep count of which movie is most popular
+			TreeMap<String, Integer> movieCount = new TreeMap<>();
+			
+			//fills up the movieCount treemap
+			for (String student : students) {
+				//grab their preferences
+				TreeSet<String> preferences = studentPreferences.get(student);
+				
+				//if preferences are null move on
+				if (preferences == null) {
+					continue;
+				}
+				//go through their movie preferences
+				for (String movie : preferences) {
+					//add to the movie count
+					movieCount.put(movie, movieCount.getOrDefault(movie, 0) + 1);
+				}
+			}
+			//if treemap is entirely empty return null
+			if (movieCount.isEmpty()) {
+				return null;
+			}
+			//Store the max value of the from the treemap as an int
+			int maxCount = Collections.max(movieCount.values());
+			//Create an arraylist to store the movie(s) with the highest preference
+			ArrayList<String> maxMovies = new ArrayList<>();
+			//search the treemap for the movie(s) with the highest preference
+			for (Entry<String, Integer> entry : movieCount.entrySet()) {
+				if (entry.getValue() == maxCount) {
+					maxMovies.add(entry.getKey());
+				}
+			}
+			//returns the movie with the highest count
+			//if there are more than one movie, randomly choose the movie based off the size of arraylist
+			return maxMovies.get(new Random().nextInt(maxMovies.size()));
 	}
 	
 	/**
