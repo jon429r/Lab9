@@ -20,8 +20,34 @@ public class MovieSelection {
 	 * Creates a Movie Selection object using a textfile of students preferences
 	 * @param preferencesFile the file used to determine the students preferences
 	 */
-	public MovieSelection(String preferencesFile) {
 	
+	//Coded by Ben
+	public MovieSelection(String preferencesFile) {
+
+		TreeMap<String, TreeSet<Movie>> mainMap = new TreeMap<String, TreeSet<Movie>>();
+			
+			Scanner scnrS = new Scanner("students.txt");
+			Scanner scnrM = new Scanner("movies.txt");
+			
+			while (scnrS.hasNextLine()) {
+				
+				String currStu = scnrS.nextLine();
+				TreeSet<Movie> movieMap = new TreeSet<Movie>();
+				
+				while (scnrM.hasNextLine()) {
+					
+					
+					Movie currmov = new Movie (scnrM.next());
+					
+					movieMap.add(currmov);
+					
+					mainMap.put(currStu, movieMap);
+				}
+				
+				mainMap.put(currStu, movieMap);
+			}
+			
+		}
 	}
 	/**
 	 * Finds a movie that is most preferable by the list of students given
