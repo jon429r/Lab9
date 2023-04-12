@@ -13,7 +13,7 @@ import java.util.TreeSet;
  * @version 5 April 2023
  */
 public class MovieSelection {
-	
+
 	private TreeMap<String, TreeSet<String>> studentPreferences;
 	
 	/**
@@ -48,7 +48,7 @@ public class MovieSelection {
 			}
 			
 		}
-	}
+	
 	/**
 	 * Finds a movie that is most preferable by the list of students given
 	 * @param students the list of students you're looking a movie for
@@ -93,11 +93,13 @@ public class MovieSelection {
 			//if there are more than one movie, randomly choose the movie based off the size of arraylist
 			return maxMovies.get(new Random().nextInt(maxMovies.size()));
 	}
+
 	
 	/**
 	 * Abbas Part - Used to test the class
 	 * has 10 separate test cases
 	 */
+	
 	public static void main(String[] args) {
 		String preferencesFile = "studentPreferences.txt";
 		MovieSelection movieSelection = new MovieSelection(preferencesFile);
@@ -139,3 +141,4 @@ public class MovieSelection {
 	}
 
 }
+
